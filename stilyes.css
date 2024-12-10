@@ -1,0 +1,32 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+.login{
+    width: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 30vh;
+}
+.inputLogIn{
+    display: flex;
+    flex-direction: column;
+    gap: .3em;
+}
+
+.catchap{
+    width: 35vw;
+    height: 8vh;
+    border: 1px solid black;
+    margin: .7em;
+}

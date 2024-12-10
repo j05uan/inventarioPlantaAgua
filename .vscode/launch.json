@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-PlantaaguaApplication<plantaagua>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "plantaagua.plantaagua.PlantaaguaApplication",
+            "projectName": "plantaagua",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
