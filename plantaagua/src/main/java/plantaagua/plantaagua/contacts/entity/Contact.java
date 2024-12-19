@@ -1,10 +1,11 @@
-package plantaagua.plantaagua.entity;
+package plantaagua.plantaagua.contacts.entity;
 
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import io.micrometer.common.lang.NonNull;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +24,7 @@ public class Contact {
     private Integer id;
 
     @NonNull
+    @Column(columnDefinition = "VARCHAR(50)", nullable = false)
     private String name;
 
     @NonNull
