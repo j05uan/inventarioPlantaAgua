@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import plantaagua.plantaagua.contacts.dto.ContactDTO;
 import plantaagua.plantaagua.contacts.entity.Contact;
 import plantaagua.plantaagua.contacts.repository.ContactRepository;
+import plantaagua.plantaagua.customer.entity.Customer;
 import plantaagua.plantaagua.exceptions.ResourceNotFoundException;
 
 

@@ -1,4 +1,4 @@
-package plantaagua.plantaagua.productos.controller;
+package plantaagua.plantaagua.region.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -14,43 +14,43 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
-import plantaagua.plantaagua.productos.entity.Porducto;
-import plantaagua.plantaagua.productos.entity.ProductDTO;
-import plantaagua.plantaagua.productos.service.ProductService;
+import plantaagua.plantaagua.region.entity.Region;
+import plantaagua.plantaagua.region.service.RegionService;
 
 @AllArgsConstructor
-@RequestMapping("/api/products")
+@RequestMapping("/api/region")
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-public class ProductController {
+public class RegionController {
 
-    private final ProductService productService;
+    private final RegionService regionService;
 
     @GetMapping
-    public Iterable<Porducto>list(){
-        return productService.findAll();
+    public Iterable<Region> list(){
+        return regionService.findAll();
     }
 
     @GetMapping("{id}")
-    public Porducto get(@PathVariable Integer id){
-        return productService.findById(id);
+    public Region get(@PathVariable Integer id){
+        return regionService.findById(id);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public Porducto create(@Validated @RequestBody ProductDTO productDTO){
-        return productService.create(productDTO);
+    public Region create(@Validated @RequestBody Region region){
+        return regionService.create(region);
     }
 
     @PutMapping("{id}")
-    public Porducto update(@PathVariable Integer id, @Validated @RequestBody ProductDTO productDTO){
-        return productService.update(id, productDTO);
+    public Region update(@PathVariable Integer id, @Validated @RequestBody Region region){
+
+        return regionService.update(id, region);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("{id}")
     public void delete(@PathVariable Integer id){
-        productService.delete(id);
+        regionService.delete(id);
     }
 
 }

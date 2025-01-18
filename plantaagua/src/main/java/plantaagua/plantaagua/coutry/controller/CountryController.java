@@ -1,4 +1,4 @@
-package plantaagua.plantaagua.productos.controller;
+package plantaagua.plantaagua.coutry.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -14,43 +14,38 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
-import plantaagua.plantaagua.productos.entity.Porducto;
-import plantaagua.plantaagua.productos.entity.ProductDTO;
-import plantaagua.plantaagua.productos.service.ProductService;
+import plantaagua.plantaagua.coutry.entity.Country;
+import plantaagua.plantaagua.coutry.service.CountryService;
 
 @AllArgsConstructor
-@RequestMapping("/api/products")
+@RequestMapping("/api/country")
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-public class ProductController {
+public class CountryController {
 
-    private final ProductService productService;
-
-    @GetMapping
-    public Iterable<Porducto>list(){
-        return productService.findAll();
-    }
+    private final CountryService countryService;
 
     @GetMapping("{id}")
-    public Porducto get(@PathVariable Integer id){
-        return productService.findById(id);
+    public Country get(@PathVariable Integer id){
+        return countryService.findById(id);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public Porducto create(@Validated @RequestBody ProductDTO productDTO){
-        return productService.create(productDTO);
+    public Country create(@Validated @RequestBody Country country){
+        return countryService.create(country);
     }
 
     @PutMapping("{id}")
-    public Porducto update(@PathVariable Integer id, @Validated @RequestBody ProductDTO productDTO){
-        return productService.update(id, productDTO);
+    public Country update(@PathVariable Integer id, @Validated @RequestBody Country country){
+
+        return countryService.update(id, country);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("{id}")
     public void delete(@PathVariable Integer id){
-        productService.delete(id);
+        countryService.delete(id);
     }
 
 }

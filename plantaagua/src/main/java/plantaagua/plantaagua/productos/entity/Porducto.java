@@ -38,7 +38,7 @@ public class Porducto {
     private String price;
 
     @ManyToOne
-    @JoinColumn(name = "tipoProducto")
+    @JoinColumn(name = "IdTipeProduct")
     private TipeProducts tipoProducto;
 
     public Porducto( String name, String description, String price, TipeProducts tipoProducto) {

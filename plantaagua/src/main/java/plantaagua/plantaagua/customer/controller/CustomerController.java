@@ -1,4 +1,4 @@
-package plantaagua.plantaagua.productos.controller;
+package plantaagua.plantaagua.customer.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -14,43 +14,43 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
-import plantaagua.plantaagua.productos.entity.Porducto;
-import plantaagua.plantaagua.productos.entity.ProductDTO;
-import plantaagua.plantaagua.productos.service.ProductService;
+import plantaagua.plantaagua.customer.entity.Customer;
+import plantaagua.plantaagua.customer.entity.CustomerDto;
+import plantaagua.plantaagua.customer.service.CustomerService;
 
 @AllArgsConstructor
-@RequestMapping("/api/products")
+@RequestMapping("/api/customer")
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-public class ProductController {
+public class CustomerController {
 
-    private final ProductService productService;
+    private final CustomerService customerService;
 
     @GetMapping
-    public Iterable<Porducto>list(){
-        return productService.findAll();
+    public Iterable<Customer> list(){
+        return customerService.findAll();
     }
 
     @GetMapping("{id}")
-    public Porducto get(@PathVariable Integer id){
-        return productService.findById(id);
+    public Customer get(@PathVariable Integer id){
+        return customerService.findById(id);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public Porducto create(@Validated @RequestBody ProductDTO productDTO){
-        return productService.create(productDTO);
+    public Customer create(@Validated @RequestBody CustomerDto customerDto){
+        return customerService.create(customerDto);
     }
 
     @PutMapping("{id}")
-    public Porducto update(@PathVariable Integer id, @Validated @RequestBody ProductDTO productDTO){
-        return productService.update(id, productDTO);
+    public Customer update(@PathVariable Integer id, @Validated @RequestBody CustomerDto customerDto){
+        return customerService.update(id, customerDto);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("{id}")
     public void delete(@PathVariable Integer id){
-        productService.delete(id);
+        customerService.delete(id);
     }
 
 }

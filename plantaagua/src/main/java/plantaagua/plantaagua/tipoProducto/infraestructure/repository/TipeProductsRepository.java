@@ -1,4 +1,4 @@
-package plantaagua.plantaagua.tipoProducto.infraestructure;
+package plantaagua.plantaagua.tipoProducto.infraestructure.repository;
 
 import org.springframework.data.repository.CrudRepository;
 

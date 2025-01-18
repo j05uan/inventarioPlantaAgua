@@ -11,8 +11,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import plantaagua.plantaagua.contacts.entity.Contact;
-import plantaagua.plantaagua.contacts.repository.ContactRepository;
+import plantaagua.plantaagua.customrtContacts.entity.customerContact;
+import plantaagua.plantaagua.customrtContacts.repository.ContactRepository;
 import plantaagua.plantaagua.productos.entity.Porducto;
 import plantaagua.plantaagua.productos.repository.ProductRepository;
 import plantaagua.plantaagua.store.entity.Store;
@@ -20,7 +20,7 @@ import plantaagua.plantaagua.store.repository.StoreRepository;
 import plantaagua.plantaagua.tipeStore.entity.TipeStore;
 import plantaagua.plantaagua.tipeStore.repository.TipeStoreRepository;
 import plantaagua.plantaagua.tipoProducto.entity.TipeProducts;
-import plantaagua.plantaagua.tipoProducto.infraestructure.TipeProductsRepository;
+import plantaagua.plantaagua.tipoProducto.infraestructure.repository.TipeProductsRepository;
 
 @SpringBootApplication
 public class PlantaaguaApplication {
@@ -29,18 +29,18 @@ public class PlantaaguaApplication {
         SpringApplication.run(PlantaaguaApplication.class, args);
     }
 
-    @Bean
-    CommandLineRunner contactRunner(ContactRepository contactRepository) {
-        return args -> {
-            List<Contact> contacts = Arrays.asList(
-                new Contact("Carlos", "carlos@gmail.com", LocalDateTime.now()),
-                new Contact("Juan", "Juan@gmail.com", LocalDateTime.now()),
-                new Contact("Marcelo", "Marcelo@gmail.com", LocalDateTime.now()),
-                new Contact("Luis", "Luis@gmail.com", LocalDateTime.now())
-            );
-            contactRepository.saveAll(contacts);
-        };
-    }
+    // @Bean
+    // CommandLineRunner contactRunner(ContactRepository contactRepository) {
+    //     return args -> {
+    //         List<Contact> contacts = Arrays.asList(
+    //             new Contact("Carlos", "carlos@gmail.com", LocalDateTime.now()),
+    //             new Contact("Juan", "Juan@gmail.com", LocalDateTime.now()),
+    //             new Contact("Marcelo", "Marcelo@gmail.com", LocalDateTime.now()),
+    //             new Contact("Luis", "Luis@gmail.com", LocalDateTime.now())
+    //         );
+    //         contactRepository.saveAll(contacts);
+    //     };
+    // }
 
     @Bean
     CommandLineRunner tipeProductsRunner(TipeProductsRepository tipeProductsRepository) {
@@ -85,7 +85,7 @@ public class PlantaaguaApplication {
             List<TipeStore> tipeStores = new ArrayList<>();
             tipeStoreRepository.findAll().forEach(tipeStores::add);
 
-            List<Contact> contacts = new ArrayList<>();
+            List<customerContact> contacts = new ArrayList<>();
             contactRepository.findAll().forEach(contacts::add);
 
             List<Store> stores = Arrays.asList(

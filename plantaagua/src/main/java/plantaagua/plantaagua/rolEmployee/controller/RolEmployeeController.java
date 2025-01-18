@@ -1,4 +1,4 @@
-package plantaagua.plantaagua.productos.controller;
+package plantaagua.plantaagua.rolEmployee.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -14,43 +14,45 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
-import plantaagua.plantaagua.productos.entity.Porducto;
-import plantaagua.plantaagua.productos.entity.ProductDTO;
-import plantaagua.plantaagua.productos.service.ProductService;
+import plantaagua.plantaagua.rolEmployee.entity.RolEmployee;
+import plantaagua.plantaagua.rolEmployee.service.RolEmployeeService;
 
 @AllArgsConstructor
-@RequestMapping("/api/products")
+@RequestMapping("/api/rolEmployee")
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-public class ProductController {
 
-    private final ProductService productService;
+public class RolEmployeeController {
+
+    private final RolEmployeeService rolEmployeeService;
 
     @GetMapping
-    public Iterable<Porducto>list(){
-        return productService.findAll();
+    public Iterable<RolEmployee> list(){
+        return rolEmployeeService.findAll();
     }
 
     @GetMapping("{id}")
-    public Porducto get(@PathVariable Integer id){
-        return productService.findById(id);
+    public RolEmployee get(@PathVariable Integer id){
+        return rolEmployeeService.findById(id);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public Porducto create(@Validated @RequestBody ProductDTO productDTO){
-        return productService.create(productDTO);
+    public RolEmployee create(@Validated @RequestBody RolEmployee rolEmployee ){
+        return rolEmployeeService.create(rolEmployee);
     }
 
     @PutMapping("{id}")
-    public Porducto update(@PathVariable Integer id, @Validated @RequestBody ProductDTO productDTO){
-        return productService.update(id, productDTO);
+    public RolEmployee update(@PathVariable Integer id, @Validated @RequestBody RolEmployee rolEmployee){
+        return rolEmployeeService.update(id,rolEmployee);
     }
+
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("{id}")
-    public void delete(@PathVariable Integer id){
-        productService.delete(id);
+    public void delete(@PathVariable Integer id) {
+        // Contact contactFromDb = contactRepository.findById(id).orElse(null);
+        rolEmployeeService.delete(id);
     }
 
 }

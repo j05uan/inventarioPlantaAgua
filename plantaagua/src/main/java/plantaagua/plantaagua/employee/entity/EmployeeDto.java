@@ -1,15 +1,18 @@
-package plantaagua.plantaagua.contacts.dto;
+package plantaagua.plantaagua.employee.entity;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-import plantaagua.plantaagua.Tipecontacts.entity.TipeContacts;
+import plantaagua.plantaagua.city.entity.City;
+import plantaagua.plantaagua.rolEmployee.entity.RolEmployee;
 
 @Getter
 @Setter
-public class ContactDTO {
+public class EmployeeDto {
+
+
     @NotBlank(message="el nombre es obligatorio")
     private String name;
 
@@ -17,17 +20,17 @@ public class ContactDTO {
     @NotBlank(message="el email es obligatorio")
     private String email;
 
-    @NotBlank(message = "El puesto del contacto es obligatorio")
-    private String position;
-
     @NotBlank(message = "El Telefono es obligatorio")
     private String phone;
 
     @NotNull
     private String observation;
 
-    @NotBlank(message = "El tipo de Contacto es obligatorio")
-    private TipeContacts tipeContacts;
+    @NotBlank(message = "La ciudad es obligatoria")
+    private City city;
+
+    @NotBlank(message = "El rol del empleado es obligatorio")
+    private RolEmployee rolEmployee;
 
 
 }

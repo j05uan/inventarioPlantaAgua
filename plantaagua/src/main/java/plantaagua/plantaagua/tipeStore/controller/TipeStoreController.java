@@ -1,4 +1,4 @@
-package plantaagua.plantaagua.productos.controller;
+package plantaagua.plantaagua.tipeStore.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -14,43 +14,45 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
-import plantaagua.plantaagua.productos.entity.Porducto;
-import plantaagua.plantaagua.productos.entity.ProductDTO;
-import plantaagua.plantaagua.productos.service.ProductService;
+import plantaagua.plantaagua.contacts.dto.ContactDTO;
+import plantaagua.plantaagua.contacts.entity.Contact;
+import plantaagua.plantaagua.tipeStore.entity.TipeStore;
+import plantaagua.plantaagua.tipeStore.service.TipeStoreService;
 
 @AllArgsConstructor
-@RequestMapping("/api/products")
+@RequestMapping("/api/tipeStore")
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-public class ProductController {
+public class TipeStoreController {
 
-    private final ProductService productService;
+    private final TipeStoreService tipeStoreService;
 
-    @GetMapping
-    public Iterable<Porducto>list(){
-        return productService.findAll();
+    @GetMapping    
+    public Iterable<TipeStore> list(){
+        return tipeStoreService.findAll();
     }
 
     @GetMapping("{id}")
-    public Porducto get(@PathVariable Integer id){
-        return productService.findById(id);
+    public TipeStore get(@PathVariable Integer id) {
+        return tipeStoreService.findById(id);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public Porducto create(@Validated @RequestBody ProductDTO productDTO){
-        return productService.create(productDTO);
-    }
-
+    public TipeStore create(@Validated @RequestBody TipeStore tipeStore) {
+        return tipeStoreService.create(tipeStore);
+    } 
+    
     @PutMapping("{id}")
-    public Porducto update(@PathVariable Integer id, @Validated @RequestBody ProductDTO productDTO){
-        return productService.update(id, productDTO);
+    public TipeStore update(@PathVariable Integer id,@Validated @RequestBody TipeStore tipeStore) {
+        
+        return tipeStoreService.update(id,tipeStore);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("{id}")
-    public void delete(@PathVariable Integer id){
-        productService.delete(id);
+    public void delete(@PathVariable Integer id) {
+        tipeStoreService.delete(id);
     }
 
 }

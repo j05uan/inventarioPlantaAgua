@@ -10,10 +10,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import lombok.Setter;
+import plantaagua.plantaagua.Tipecontacts.entity.TipeContacts;
+import plantaagua.plantaagua.customer.entity.Customer;
 @Getter
 @Setter
 @Entity
@@ -31,12 +35,26 @@ public class Contact {
     private String email;
 
     @NonNull
+    private String position;
+
+    @NonNull
+    private String observation;
+
+    @NonNull
+    private String phone;
+
+    @NonNull
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdAt;
 
-    public Contact(String name, String email, LocalDateTime createdAt) {
-        this.name = name;
-        this.email = email;
-        this.createdAt = createdAt;
-    }
+    @ManyToOne
+    @JoinColumn
+    private TipeContacts tipeContacts;
+
+
+
+    
+
+
+    
 }

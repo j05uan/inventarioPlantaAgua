@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
 import plantaagua.plantaagua.exceptions.ResourceNotFoundException;
 import plantaagua.plantaagua.productos.entity.Porducto;
+import plantaagua.plantaagua.productos.entity.ProductDTO;
 import plantaagua.plantaagua.productos.repository.ProductRepository;
-import plantaagua.plantaagua.tipoProducto.entity.ProductDTO;
 
 @AllArgsConstructor
 @Service

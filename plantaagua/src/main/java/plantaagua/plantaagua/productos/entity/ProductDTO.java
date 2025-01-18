@@ -1,8 +1,9 @@
-package plantaagua.plantaagua.tipoProducto.entity;
+package plantaagua.plantaagua.productos.entity;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
+import plantaagua.plantaagua.tipoProducto.entity.TipeProducts;
 
 @Getter
 @Setter

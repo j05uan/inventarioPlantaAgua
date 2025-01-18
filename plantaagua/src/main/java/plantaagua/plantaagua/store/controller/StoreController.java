@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
 import plantaagua.plantaagua.productos.entity.Porducto;
+import plantaagua.plantaagua.productos.entity.ProductDTO;
 import plantaagua.plantaagua.store.entity.Store;
 import plantaagua.plantaagua.store.entity.StoreDTO;
 import plantaagua.plantaagua.store.service.StoreService;
-import plantaagua.plantaagua.tipoProducto.entity.ProductDTO;
 
 @AllArgsConstructor
 @RequestMapping("/api/store")

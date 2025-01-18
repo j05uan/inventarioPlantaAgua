@@ -1,4 +1,4 @@
-package plantaagua.plantaagua.productos.controller;
+package plantaagua.plantaagua.employee.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -14,43 +14,42 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
-import plantaagua.plantaagua.productos.entity.Porducto;
-import plantaagua.plantaagua.productos.entity.ProductDTO;
-import plantaagua.plantaagua.productos.service.ProductService;
+import plantaagua.plantaagua.employee.entity.Employee;
+import plantaagua.plantaagua.employee.entity.EmployeeDto;
+import plantaagua.plantaagua.employee.service.EmployeeServices;
 
 @AllArgsConstructor
-@RequestMapping("/api/products")
+@RequestMapping("/api/employees")
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-public class ProductController {
+public class EmployeeController {
 
-    private final ProductService productService;
+    private final EmployeeServices employeeServices;
 
     @GetMapping
-    public Iterable<Porducto>list(){
-        return productService.findAll();
+    public Iterable<Employee> list(){
+        return employeeServices.findAll();
     }
 
-    @GetMapping("{id}")
-    public Porducto get(@PathVariable Integer id){
-        return productService.findById(id);
+    @GetMapping
+    public Employee get(@PathVariable Integer id){
+        return employeeServices.findById(id);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public Porducto create(@Validated @RequestBody ProductDTO productDTO){
-        return productService.create(productDTO);
+    public Employee create(@Validated @RequestBody EmployeeDto employeeDto){
+        return employeeServices.create(employeeDto);
     }
 
     @PutMapping("{id}")
-    public Porducto update(@PathVariable Integer id, @Validated @RequestBody ProductDTO productDTO){
-        return productService.update(id, productDTO);
+    public Employee update(@PathVariable Integer id, @Validated @RequestBody EmployeeDto employeeDto){
+        return employeeServices.update(id, employeeDto);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("{id}")
     public void delete(@PathVariable Integer id){
-        productService.delete(id);
+        employeeServices.delete(id);
     }
-
 }

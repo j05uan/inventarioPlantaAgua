@@ -10,13 +10,16 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import plantaagua.plantaagua.city.entity.City;
 import plantaagua.plantaagua.contacts.entity.Contact;
+import plantaagua.plantaagua.employee.entity.Employee;
 import plantaagua.plantaagua.tipeStore.entity.TipeStore;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Store {
 
@@ -32,6 +35,11 @@ public class Store {
     @Column(columnDefinition = "VARCHAR(50)", nullable = false)
     private String address;
 
+
+    @NonNull
+    private String capacitance;
+
+
     @NonNull
     @Column(columnDefinition = "VARCHAR(50)", nullable = false)
     private String phone;
@@ -41,16 +49,34 @@ public class Store {
     private TipeStore tipeStore;
 
     @ManyToOne
+    @JoinColumn
+    private City city;
+
+    @ManyToOne
+    @JoinColumn(name = "license")
+    private Employee employee;
+
+    @ManyToOne
     @JoinColumn(name = "contacto")
     private Contact contact;
 
-    public Store(String name, String address, String phone, TipeStore tipeStore, Contact contact) {
+    public Store(Integer id, String name, String address, String capacitance, String phone, TipeStore tipeStore,
+            City city, Employee employee, Contact contact) {
+        this.id = id;
         this.name = name;
         this.address = address;
+        this.capacitance = capacitance;
         this.phone = phone;
         this.tipeStore = tipeStore;
+        this.city = city;
+        this.employee = employee;
         this.contact = contact;
     }
+
+    
+
+
+    
 
     
     
