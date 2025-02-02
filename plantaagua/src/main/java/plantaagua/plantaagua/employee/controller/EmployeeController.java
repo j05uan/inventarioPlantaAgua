@@ -31,7 +31,7 @@ public class EmployeeController {
         return employeeServices.findAll();
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public Employee get(@PathVariable Integer id){
         return employeeServices.findById(id);
     }

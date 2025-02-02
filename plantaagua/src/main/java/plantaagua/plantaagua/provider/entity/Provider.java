@@ -1,4 +1,4 @@
-package plantaagua.plantaagua.employee.entity;
+package plantaagua.plantaagua.provider.entity;
 
 import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.Entity;
@@ -11,13 +11,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import plantaagua.plantaagua.city.entity.City;
-import plantaagua.plantaagua.rolEmployee.entity.RolEmployee;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-public class Employee {
+public class Provider {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,8 +31,7 @@ public class Employee {
     @NonNull 
     private String phone;
 
-    private String observation;
-
+    
     @ManyToOne
     @JoinColumn
     private City city;
@@ -41,23 +39,7 @@ public class Employee {
     @NonNull
     private String address;
 
-    @ManyToOne
-    @JoinColumn
-    private RolEmployee rolEmployee;
-
-    public Employee(Integer id, String name, String email, String phone, String observation, City city,
-            RolEmployee rolEmployee) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.observation = observation;
-        this.city = city;
-        this.rolEmployee = rolEmployee;
-    }
-
     
 
 
-    
 }

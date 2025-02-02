@@ -17,7 +17,6 @@ import lombok.NoArgsConstructor;
 
 import lombok.Setter;
 import plantaagua.plantaagua.Tipecontacts.entity.TipeContacts;
-import plantaagua.plantaagua.customer.entity.Customer;
 @Getter
 @Setter
 @Entity
@@ -51,10 +50,14 @@ public class Contact {
     @JoinColumn
     private TipeContacts tipeContacts;
 
-
-
-    
-
-
-    
+    // Constructor personalizado
+    public Contact(String name, String email, String position, String observation, String phone, LocalDateTime createdAt, TipeContacts tipeContacts) {
+        this.name = name;
+        this.email = email;
+        this.position = position;
+        this.observation = observation;
+        this.phone = phone;
+        this.createdAt = createdAt;
+        this.tipeContacts = tipeContacts;
+    }
 }

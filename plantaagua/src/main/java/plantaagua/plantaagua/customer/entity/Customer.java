@@ -46,7 +46,6 @@ public class Customer {
     @NonNull
     private String address;
 
-
     @NonNull
     private String email;
 

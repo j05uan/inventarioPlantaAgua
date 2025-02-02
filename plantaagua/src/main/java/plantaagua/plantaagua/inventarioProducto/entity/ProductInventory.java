@@ -15,6 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import plantaagua.plantaagua.employee.entity.Employee;
 import plantaagua.plantaagua.productos.entity.Porducto;
 import plantaagua.plantaagua.store.entity.Store;
 
@@ -33,7 +34,10 @@ public class ProductInventory {
     private String observation;
 
     @NonNull
-    private String cantidad;
+    private String reason;
+
+    @NonNull
+    private String amount;
 
     @NonNull
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -44,18 +48,38 @@ public class ProductInventory {
     private Porducto porducto;
 
     @ManyToOne
-    @JoinColumn(name = "idBodega")
+    @JoinColumn(name = "idStore")
     private Store store;
 
-    public ProductInventory(Integer id, String observation, String cantidad, LocalDateTime createdAt, Porducto porducto,
-            Store store) {
+    @ManyToOne
+    @JoinColumn(name = "responsible")
+    private Employee employee;
+
+    @NonNull
+    private String unitPrice;
+
+    @NonNull
+    private String discount;
+
+    @NonNull
+    private String total;
+
+    public ProductInventory(Integer id, String observation, String reason, String amount, LocalDateTime createdAt,
+            Porducto porducto, Store store, Employee employee, String unitPrice, String discount, String total) {
         this.id = id;
         this.observation = observation;
-        this.cantidad = cantidad;
+        this.reason = reason;
+        this.amount = amount;
         this.createdAt = createdAt;
         this.porducto = porducto;
         this.store = store;
+        this.employee = employee;
+        this.unitPrice = unitPrice;
+        this.discount = discount;
+        this.total = total;
     }
+    
+    
 
     
 

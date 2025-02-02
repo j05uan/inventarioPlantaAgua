@@ -23,8 +23,8 @@ public class TipeContacts {
     @NonNull
     private String name;
 
-    public TipeContacts(Integer id, String name) {
-        this.id = id;
+    public TipeContacts( String name) {
+        
         this.name = name;
     }
 

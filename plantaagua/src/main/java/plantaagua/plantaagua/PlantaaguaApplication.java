@@ -11,8 +11,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import plantaagua.plantaagua.customrtContacts.entity.customerContact;
-import plantaagua.plantaagua.customrtContacts.repository.ContactRepository;
+import plantaagua.plantaagua.Tipecontacts.entity.TipeContacts;
+import plantaagua.plantaagua.Tipecontacts.repository.TipeContactsRepository;
+import plantaagua.plantaagua.contacts.entity.Contact;
+import plantaagua.plantaagua.contacts.repository.ContactRepository;
 import plantaagua.plantaagua.productos.entity.Porducto;
 import plantaagua.plantaagua.productos.repository.ProductRepository;
 import plantaagua.plantaagua.store.entity.Store;
@@ -29,18 +31,26 @@ public class PlantaaguaApplication {
         SpringApplication.run(PlantaaguaApplication.class, args);
     }
 
-    // @Bean
-    // CommandLineRunner contactRunner(ContactRepository contactRepository) {
-    //     return args -> {
-    //         List<Contact> contacts = Arrays.asList(
-    //             new Contact("Carlos", "carlos@gmail.com", LocalDateTime.now()),
-    //             new Contact("Juan", "Juan@gmail.com", LocalDateTime.now()),
-    //             new Contact("Marcelo", "Marcelo@gmail.com", LocalDateTime.now()),
-    //             new Contact("Luis", "Luis@gmail.com", LocalDateTime.now())
-    //         );
-    //         contactRepository.saveAll(contacts);
-    //     };
-    // }
+    @Bean
+CommandLineRunner contactRunner(ContactRepository contactRepository, TipeContactsRepository tipeContactsRepository) {
+    return args -> {
+        // Inicializamos tipos de contacto
+        TipeContacts tipeContact1 = new TipeContacts( "Cliente");
+        TipeContacts tipeContact2 = new TipeContacts( "Proveedor");
+        tipeContactsRepository.saveAll(Arrays.asList(tipeContact1, tipeContact2));
+
+        // Inicializamos contactos
+        List<Contact> contacts = Arrays.asList(
+            new Contact("Carlos", "carlos@gmail.com", "Gerente", "Ninguna", "123456789", LocalDateTime.now(), tipeContact1),
+            new Contact("Juan", "juan@gmail.com", "Analista", "Requiere seguimiento", "987654321", LocalDateTime.now(), tipeContact2),
+            new Contact("Marcelo", "marcelo@gmail.com", "Director", "Pendiente de reunión", "111222333", LocalDateTime.now(), tipeContact1),
+            new Contact("Luis", "luis@gmail.com", "Supervisor", "Comentarios adicionales", "444555666", LocalDateTime.now(), tipeContact2)
+        );
+
+        contactRepository.saveAll(contacts);
+    };
+}
+
 
     @Bean
     CommandLineRunner tipeProductsRunner(TipeProductsRepository tipeProductsRepository) {
@@ -78,27 +88,27 @@ public class PlantaaguaApplication {
         };
     }
 
-    @Bean
-    CommandLineRunner storeRunner(StoreRepository storeRepository, TipeStoreRepository tipeStoreRepository, ContactRepository contactRepository){
-        return args -> {
+    // @Bean
+    // CommandLineRunner storeRunner(StoreRepository storeRepository, TipeStoreRepository tipeStoreRepository, ContactRepository contactRepository){
+    //     return args -> {
 
-            List<TipeStore> tipeStores = new ArrayList<>();
-            tipeStoreRepository.findAll().forEach(tipeStores::add);
+    //         List<TipeStore> tipeStores = new ArrayList<>();
+    //         tipeStoreRepository.findAll().forEach(tipeStores::add);
 
-            List<customerContact> contacts = new ArrayList<>();
-            contactRepository.findAll().forEach(contacts::add);
+    //         List<customerContact> contacts = new ArrayList<>();
+    //         contactRepository.findAll().forEach(contacts::add);
 
-            List<Store> stores = Arrays.asList(
-                new Store("Reparto", "Casa Inge", "3235656562", tipeStores.get(0), contacts.get(1)),
-                new Store("Produccion", " Call 20 - 30", "3132634562", tipeStores.get(1), contacts.get(2))
-            );
+    //         List<Store> stores = Arrays.asList(
+    //             new Store("Reparto", "Casa Inge", "3235656562", tipeStores.get(0), contacts.get(1)),
+    //             new Store("Produccion", " Call 20 - 30", "3132634562", tipeStores.get(1), contacts.get(2))
+    //         );
 
-            storeRepository.saveAll(stores);
+    //         storeRepository.saveAll(stores);
 
             
 
-        };
-    }
+    //     };
+    // }
 
 
 

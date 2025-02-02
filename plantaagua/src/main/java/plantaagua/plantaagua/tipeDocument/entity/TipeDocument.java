@@ -20,11 +20,11 @@ public class TipeDocument {
     private Integer id;
 
     @NonNull
-    private String TipeDocument;
+    private String name;
 
     public TipeDocument(Integer id, String tipeDocument) {
         this.id = id;
-        TipeDocument = tipeDocument;
+        name = tipeDocument;
     }
 
     
